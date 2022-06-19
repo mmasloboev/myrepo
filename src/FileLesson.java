@@ -14,5 +14,8 @@ public class FileLesson {
 
         scanner.close();
         fileScanner.close();
+
+        System.out.println(file.getPath());
+        System.out.println(file.getName());
     }
 }
