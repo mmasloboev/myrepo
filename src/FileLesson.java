@@ -1,21 +1,26 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
 public class FileLesson {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        File file = new File(scanner.nextLine());
-        Scanner fileScanner = new Scanner(file);
+        String path = scanner.nextLine();
+        File file = new File(path);
+        Scanner fileScanner = null;
+
+        try {
+            fileScanner = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            System.err.println("Файл не найден");
+            System.err.println("Аварийное завершение работы программы");
+            System.exit(-1);
+        }
 
         while (fileScanner.hasNextLine()) {
             System.out.println(fileScanner.nextLine());
         }
 
-        scanner.close();
         fileScanner.close();
-
-        System.out.println(file.getPath());
-        System.out.println(file.getName());
+        scanner.close();
     }
 }
